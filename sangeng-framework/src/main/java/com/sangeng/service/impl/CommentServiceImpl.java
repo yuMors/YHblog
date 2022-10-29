@@ -67,7 +67,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
             commentVo.setChildren(children);
         }*/
         //查询对应的子评论
-        //commentVoList.forEach(commentVo -> commentVo.setChildren(getChildren(commentVo.getId())));
+        commentVoList.forEach(commentVo -> commentVo.setChildren(getChildren(commentVo.getId())));
 
         return ResponseResult.okResult(new PageVo(commentVoList, page.getTotal()));
     }
