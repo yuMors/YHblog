@@ -5,6 +5,10 @@ import com.sangeng.service.UploadService;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
+/**
+ * 上传头像
+ */
+
 @Service
 public class UploadServiceImpl implements UploadService {
 
