@@ -16,6 +16,8 @@ public class ShiYunGenerator {
     // 设置过滤表前缀
     final String tablePrefix = "sg_";
 
+    String name = "Makos";
+    String name2 = "YEHANG";
     @Test
     public void generator() {
         // 配置数据库
@@ -23,7 +25,7 @@ public class ShiYunGenerator {
 
         FastAutoGenerator.create(mysqlUrl, "root", "root")
                 .globalConfig(builder -> {
-                    builder.author("Makos") // 设置作者
+                    builder.author("YEHANG") // 设置作者
                             //.enableSwagger() // 开启swagger模式 一些文档注解
                             .fileOverride() // 覆盖已生成文件
                             .disableOpenDir()//不打开输出目录
