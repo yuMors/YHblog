@@ -58,10 +58,13 @@ public class Comment {
      */
     @TableField(fill = FieldFill.INSERT)
     private Long createBy;
+
     @TableField(fill = FieldFill.INSERT)
     private String createTime;
+
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private Long updateBy;
+
     @TableField(fill = FieldFill.INSERT_UPDATE)
     private String updateTime;
 

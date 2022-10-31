@@ -36,14 +36,10 @@ public class ResponseResult<T> implements Serializable {
         this.data = data;
     }
 
-    public static ResponseResult errorResult(int code, String msg) {
-        ResponseResult result = new ResponseResult();
-        return result.error(code, msg);
-    }
 
-    public static ResponseResult okResult() {
-        ResponseResult result = new ResponseResult();
-        return result;
+
+    public static ResponseResult<?> okResult() {
+        return new ResponseResult<>();
     }
 
     public static ResponseResult<?> okResult(Object data) {
@@ -56,11 +52,20 @@ public class ResponseResult<T> implements Serializable {
         return result;
     }
 
-    public static ResponseResult okResult(int code, String msg) {
-        ResponseResult result = new ResponseResult();
+    public static ResponseResult<?> okResult(int code, String msg) {
+        ResponseResult<?> result = new ResponseResult<>();
         return result.ok(code, null, msg);
     }
 
+    public static ResponseResult<?> errorResult(String msg) {
+        ResponseResult<?> result = new ResponseResult<>();
+        return result.error(msg);
+    }
+
+    public static ResponseResult<?> errorResult(int code, String msg) {
+        ResponseResult<?> result = new ResponseResult<>();
+        return result.error(code, msg);
+    }
 
     public static ResponseResult<?> errorResult(AppHttpCodeEnum enums) {
         return setAppHttpCodeEnum(enums, enums.getMsg());
