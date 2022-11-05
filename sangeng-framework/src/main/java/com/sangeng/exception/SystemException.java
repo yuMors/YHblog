@@ -7,6 +7,7 @@ import com.sangeng.enums.AppHttpCodeEnum;
  * 好像就是闪电符号
  */
 public class SystemException extends RuntimeException {
+
     private int code;
     private String msg;
 

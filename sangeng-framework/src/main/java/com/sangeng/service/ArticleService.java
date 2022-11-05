@@ -11,7 +11,7 @@ public interface ArticleService extends IService<Article> {
      * 查询热门文章 封装成ResponseResult返回
      * @return
      */
-    ResponseResult hotArticleList();
+    ResponseResult<?> hotArticleList();
 
     SYResponse<?> hotList();
 

@@ -1,6 +1,5 @@
 package com.sangeng.controller;
 
-
 import com.sangeng.config.ResponseResult;
 import com.sangeng.service.LinkService;
 import org.springframework.beans.factory.annotation.Autowired;

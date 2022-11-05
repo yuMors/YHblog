@@ -34,7 +34,7 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
      * 查询热门文章 封装成ResponseResult返回
      */
     @Override
-    public ResponseResult hotArticleList() {
+    public ResponseResult<?> hotArticleList() {
         LambdaQueryWrapper<Article> queryWrapper = new LambdaQueryWrapper<>();
         //必须是正式文章 //逻辑删除
         queryWrapper.eq(Article::getStatus, SysConstants.ARTICLE_STATUS_NORMAL);
