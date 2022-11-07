@@ -24,5 +24,4 @@ public class UploadController {
         return uploadService.uploadImg(img);
     }
 
-
 }
