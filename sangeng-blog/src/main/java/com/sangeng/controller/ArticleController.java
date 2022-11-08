@@ -18,15 +18,17 @@ public class ArticleController {
 
     @GetMapping("/list")
     public List<Article> test() {
-        List<Article> articleList = articleService.list();
-        return articleList;
+        /*List<Article> articleList = articleService.list();
+        return articleList;*/
+        return articleService.list();
     }
 
     @GetMapping("/hotArticleList")
-    public ResponseResult hotArticleList() {
+    public ResponseResult<?> hotArticleList() {
         //查询热门文章 封装成ResponseResult返回
-        ResponseResult result = articleService.hotArticleList();
-        return result;
+        /*ResponseResult<?> result = articleService.hotArticleList();
+        return result;*/
+        return articleService.hotArticleList();
     }
 
     @GetMapping("/hotList")
@@ -40,6 +42,16 @@ public class ArticleController {
     @GetMapping("/articleList")
     public ResponseResult<?> articleList(Integer pageNum, Integer pageSize, Long categoryId) {
         return articleService.articleList(pageNum,pageSize,categoryId);
+    }
+
+    /**
+     * 更新浏览量
+     * 更新 修改 用put
+     * 从零添加用post
+     */
+    @PutMapping("/updateViewCount/{id}")
+    public ResponseResult<?> updateViewCount(@PathVariable("id") Long id){
+        return articleService.updateViewCount(id);
     }
 
     /**

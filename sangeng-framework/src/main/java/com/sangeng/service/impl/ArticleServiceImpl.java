@@ -16,6 +16,7 @@ import com.sangeng.mapper.ArticleMapper;
 import com.sangeng.service.ArticleService;
 import com.sangeng.service.CategoryService;
 import com.sangeng.utils.BeanCopyUtils;
+import com.sangeng.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
@@ -28,6 +29,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
 
     @Autowired
     private CategoryService categoryService;
+
+    @Autowired
+    private RedisCache redisCache;
 
 
     /**
@@ -94,7 +98,9 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         //分页查询
         Page<Article> page = new Page<>(pageNum, pageSize);
         page(page, lambdaQueryWrapper);
+
         System.err.println(page);
+        //System.err.println(page.getRecords());
         //查询categoryName
 
         List<Article> articleList = page.getRecords();
@@ -160,5 +166,16 @@ public class ArticleServiceImpl extends ServiceImpl<ArticleMapper, Article> impl
         }
         //封装响应返回
         return ResponseResult.okResult(articleDetailVo);
+    }
+
+    /**
+     * 更新浏览量
+     * @param id 暂无描述
+     */
+    @Override
+    public ResponseResult<?> updateViewCount(Long id) {
+        //更新redis中对应 id的浏览量
+        redisCache.incrementCacheMapValue("article:viewCount",id.toString(), 1);
+        return ResponseResult.okResult();
     }
 }

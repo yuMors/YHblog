@@ -18,7 +18,7 @@ public enum AppHttpCodeEnum {
       CONTENT_NOT_NULL(506,"内容不能为空"),
        FILE_TYPE_ERROR(507,"文件类型错误，请上传png或jpg文件"),
      USERNAME_NOT_NULL(508,"用户名不能为空"),
-    /**昵称不能为空*/
+     /**昵称不能为空*/
      NICKNAME_NOT_NULL(509,"昵称不能为空"),
      PASSWORD_NOT_NULL(510,"密码不能为空"),
         EMAIL_NOT_NULL(511,"邮箱不能为空"),

@@ -13,6 +13,8 @@ import java.util.concurrent.TimeUnit;
 @SuppressWarnings(value = {"unchecked", "rawtypes"})
 @Component
 public class RedisCache {
+    //乱码可能是因为没有配置redis hash 序列化
+
     @Autowired
     public RedisTemplate redisTemplate;
 
@@ -185,10 +187,21 @@ public class RedisCache {
     }
 
     /**
+     * 定期更新缓存中的数据
+     * increment 定期加薪
+     * @param key Redis中的hash中的key
+     * @param hKey hKey Hash键 对应的字段的key
+     * @param v 递增的值
+     */
+    public void incrementCacheMapValue(String key, String hKey, int v){
+        redisTemplate.opsForHash().increment(key, hKey, v);
+    }
+
+    /**
      * 删除Hash中的数据
      *
-     * @param key
-     * @param hkey
+     * @param key Redis键
+     * @param hkey hKey Hash键
      */
     public void delCacheMapValue(final String key, final String hkey) {
         HashOperations hashOperations = redisTemplate.opsForHash();

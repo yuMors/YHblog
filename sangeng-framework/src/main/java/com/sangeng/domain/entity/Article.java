@@ -8,6 +8,7 @@ import lombok.AllArgsConstructor;
 import lombok.Data;
 import lombok.NoArgsConstructor;
 import lombok.experimental.Accessors;
+import org.jetbrains.annotations.Contract;
 
 /**
  * <p>文章表</p>
@@ -48,6 +49,7 @@ public class Article {
 
     /**
      * 所属分类名称
+     *
      * @TableField 数据库字段
      * (exist = false)
      * 标识这个字段在这个表中不存在
@@ -98,4 +100,8 @@ public class Article {
      */
     private Integer delFlag;
 
+    public Article(Long id, long viewCount) {
+        this.id = id;
+        this.viewCount = viewCount;
+    }
 }
