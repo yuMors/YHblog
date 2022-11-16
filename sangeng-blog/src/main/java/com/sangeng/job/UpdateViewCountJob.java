@@ -2,16 +2,14 @@ package com.sangeng.job;
 
 import com.baomidou.mybatisplus.core.conditions.update.LambdaUpdateWrapper;
 import com.sangeng.constants.SysConstants;
+import com.sangeng.constants.YHTime;
 import com.sangeng.domain.entity.Article;
 import com.sangeng.service.ArticleService;
 import com.sangeng.utils.RedisCache;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-import org.springframework.util.ObjectUtils;
 
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
 import java.util.List;
 import java.util.Map;
 import java.util.stream.Collectors;
@@ -41,10 +39,17 @@ public class UpdateViewCountJob {
             System.out.println("articles 为空");
         }
     }*/
-    @Scheduled(cron = "0/5 * * * * ?")
+
+    /**
+     * 因为up主给的mp自动配置insert，update的config文件中，
+     * 只有insert时判了token里的id是不是空，update没判，
+     * 同时更新浏览量这个接口是不需要前端带token的，
+     * 所以会报空指针异常
+     */
+    @Scheduled(cron = "0/30 * * * * ?")
     public void updateViewCount() {
         //获取redis中浏览量数据
-        Map<String, Integer> viewCountMap = redisCache.getCacheMap("article:viewCount");
+        Map<String, Integer> viewCountMap = redisCache.getCacheMap(SysConstants.ARTICLE_VIEW_COUNT);
 
         List<Article> articles = viewCountMap.entrySet()
                 .stream()
@@ -57,6 +62,7 @@ public class UpdateViewCountJob {
             updateWrapper.set(Article::getViewCount, article.getViewCount());
             articleService.update(updateWrapper);
         }
-        System.out.println("updateViewCount定时任务执行了: "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+
+        System.out.println("updateViewCount定时任务执行了: " + YHTime.now());
     }
 }

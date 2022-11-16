@@ -4,6 +4,8 @@ import org.mybatis.spring.annotation.MapperScan;
 import org.springframework.boot.SpringApplication;
 import org.springframework.boot.autoconfigure.SpringBootApplication;
 import org.springframework.scheduling.annotation.EnableScheduling;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import springfox.documentation.swagger2.annotations.EnableSwagger2;
 
 /**
  * 1、@MapperScan配合@mapper注解
@@ -12,11 +14,15 @@ import org.springframework.scheduling.annotation.EnableScheduling;
  *
  * 2、@EnableScheduling开启定时任务功能
  */
+
 @SpringBootApplication
 @MapperScan(value = "com.sangeng.mapper")
 @EnableScheduling
+@EnableSwagger2
 public class SGBlogApplication {
     public static void main(String[] args) {
         SpringApplication.run(SGBlogApplication.class,args);
+        System.out.println("接口Swagger文档: "+"http://localhost:7777/swagger-ui.html");
     }
+
 }

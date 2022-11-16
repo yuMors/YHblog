@@ -3,12 +3,14 @@ package com.sangeng.config;
 import com.baomidou.mybatisplus.extension.plugins.pagination.Page;
 import com.fasterxml.jackson.annotation.JsonInclude;
 import com.sangeng.enums.AppHttpCodeEnum;
+import io.swagger.annotations.ApiModel;
 
 import java.io.Serializable;
 
 //所以@JsonInclude(Include.NON_NULL) 这个注解放在类头上就可以解决。
 //实体类与json互转的时候 属性值为null的不参与序列化
 @JsonInclude(JsonInclude.Include.NON_NULL)
+@ApiModel(description = "返回类")
 public class ResponseResult<T> implements Serializable {
     private Integer code;
     private String msg;

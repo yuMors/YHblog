@@ -1,12 +1,10 @@
 package com.sangeng.job;
 
+import com.baomidou.mybatisplus.core.conditions.query.LambdaQueryWrapper;
+import com.sangeng.constants.YHTime;
 import org.springframework.scheduling.annotation.Scheduled;
 import org.springframework.stereotype.Component;
-
-import java.time.LocalDate;
-import java.time.LocalDateTime;
-import java.time.format.DateTimeFormatter;
-import java.util.logging.SimpleFormatter;
+import org.springframework.util.ObjectUtils;
 
 @Component
 public class TestJob {
@@ -25,9 +23,10 @@ public class TestJob {
      * 表示每1分钟 执行任务
      */
 
-    @Scheduled(cron = "* 0/10 * * * ?")
+    @Scheduled(cron = "0 0/10 * * * ?")
     public void testJob(){
         //要执行的diamagnetic
-        System.out.println("testJob定时任务执行了: "+ LocalDateTime.now().format(DateTimeFormatter.ofPattern("yyyy-MM-dd HH:mm:ss")));
+        System.out.println("testJob定时任务执行了: "+ YHTime.now());
     }
+
 }

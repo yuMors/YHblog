@@ -16,7 +16,6 @@ import org.springframework.security.web.AuthenticationEntryPoint;
 import org.springframework.security.web.SecurityFilterChain;
 import org.springframework.security.web.access.AccessDeniedHandler;
 import org.springframework.security.web.authentication.UsernamePasswordAuthenticationFilter;
-import org.springframework.stereotype.Component;
 
 @Configuration
 @EnableWebSecurity // 添加 security 过滤器
@@ -51,7 +50,6 @@ public class SecurityConfig {
      *     著作权归作者所有。商业转载请联系作者获得授权，非商业转载请注明出处。
      */
 
-
     @Bean
     public AuthenticationManager authenticationManager(AuthenticationConfiguration authenticationConfiguration) throws Exception {
         return authenticationConfiguration.getAuthenticationManager();
@@ -64,8 +62,6 @@ public class SecurityConfig {
     public PasswordEncoder passwordEncoder() {
         return new BCryptPasswordEncoder();
     }
-
-
 
 
     /*@Override
@@ -110,9 +106,9 @@ public class SecurityConfig {
                 .sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                // 对于登录接口 允许匿名访问.antMatchers("/login").anonymous()
-                .antMatchers("/logout").authenticated()
-                .antMatchers("/login").anonymous()
+                // 对于登录接口 允许匿名访问
+                //.antMatchers("/login").anonymous()
+                //.antMatchers("/logout").authenticated()
                 // 除上面外的所有请求全部不需要认证即可访问
                 .anyRequest().permitAll();
 

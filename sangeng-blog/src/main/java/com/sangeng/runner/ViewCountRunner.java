@@ -1,5 +1,6 @@
 package com.sangeng.runner;
 
+import com.sangeng.constants.SysConstants;
 import com.sangeng.domain.entity.Article;
 import com.sangeng.mapper.ArticleMapper;
 import com.sangeng.utils.RedisCache;
@@ -40,7 +41,7 @@ public class ViewCountRunner implements CommandLineRunner {
                 .collect(Collectors.toMap(article1 -> article1.getId().toString(),
                         article -> article.getViewCount().intValue()));
         //存储到redis中 SystemConstants.ARTICLE_VIEWCOUNT
-        redisCache.setCacheMap("article:viewCount",viewCountMap);
+        redisCache.setCacheMap(SysConstants.ARTICLE_VIEW_COUNT,viewCountMap);
 
     }
 }

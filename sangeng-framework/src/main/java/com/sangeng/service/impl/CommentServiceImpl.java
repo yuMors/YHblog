@@ -31,13 +31,14 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
 
     /**
      * 评论列表 根评论
-     *  @param articleId 文章ID
+     * @param commentType
+     * @param articleId 文章ID
      * @param pageNum   当前页
      * @param pageSize  每页数量
-     * @param commentType
+     * @return
      */
     @Override
-    public ResponseResult<?> commentList(String commentType,Long articleId, Integer pageNum, Integer pageSize) {
+    public ResponseResult<?> commentList(String commentType, Long articleId, Integer pageNum, Integer pageSize) {
         //查询对应文章的根评论
         LambdaQueryWrapper<Comment> queryWrapper = new LambdaQueryWrapper<>();
         //对articleId进行判断
@@ -71,6 +72,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
 
         return ResponseResult.okResult(new PageVo(commentVoList, page.getTotal()));
     }
+
 
     /**
      * 根据根评论的id查询对应的子评论的集合
@@ -131,7 +133,7 @@ public class CommentServiceImpl extends ServiceImpl<CommentMapper, Comment> impl
      * 然后他根据-1查自然查不到id为-1的
      */
     @Override
-    public ResponseResult<?> addComment(Comment comment) {
+    public ResponseResult addComment(Comment comment) {
         //评论内容不能为空
         //comment.setCreateBy(1L);
         //从前端只传过来了部分字段 剩余字段需要赋值 不建议用默认的
