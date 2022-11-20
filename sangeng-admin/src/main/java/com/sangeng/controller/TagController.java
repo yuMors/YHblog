@@ -23,6 +23,7 @@ import org.springframework.web.bind.annotation.RestController;
 @RequestMapping("/content/tag")
 @Api(tags = "标签")
 public class TagController {
+
     @Autowired
     private ITagService tagService;
 
