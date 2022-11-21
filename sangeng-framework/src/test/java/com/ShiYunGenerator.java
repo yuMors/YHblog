@@ -11,9 +11,9 @@ public class ShiYunGenerator {
     //final String outputFileSy = "C://Users/30676/Desktop/day5/day5Boot/src/main/java/com/day5Boot/";
     final String outputFileSy = "C://Users/30676/Desktop/day-java/ideaWork/SGBlog/sangeng-framework/src/main/java/com/sangeng/";
     // 设置需要生成的表名
-    final String databaseTable = "sg_tag";
+    final String databaseTable = "sys_role";
     // 设置过滤表前缀
-    final String tablePrefix = "sg_";
+    final String tablePrefix = "sys_";
 
     String name = "Makos";
     String name2 = "YEHANG";
@@ -29,6 +29,7 @@ public class ShiYunGenerator {
                             .fileOverride() // 覆盖已生成文件
                             .disableOpenDir()//不打开输出目录
                             .outputDir(outputFileSy) // 指定输出目录
+                            .commentDate("yyyy-MM-dd HH:mm:ss")//设置注释时间格式
                             .build();
 
                 })
@@ -47,7 +48,7 @@ public class ShiYunGenerator {
                             .entityBuilder()//开启实体类控制
                             .disableSerialVersionUID()//关闭序列化ID
                             .enableLombok()//启用Lombok注解开发
-                            .controllerBuilder()
+                            .controllerBuilder()//开启controller层控制
                             .enableRestStyle();//开启Rest风格的controller
 
                 })

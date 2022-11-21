@@ -34,4 +34,13 @@ public class SysConstants {
     /**登录*/
     public static final String login = "login:";
 
+    /**后端登录token*/
+    public static final String token = "token";
+
+    /**permissions需要有所有菜单类型为C或者F的，状态为正常的，未删除的权限*/
+    public static final String MENU = "C";
+
+    /**C是菜单 F是按钮*/
+    public static final String BUTTON = "F";
+
 }

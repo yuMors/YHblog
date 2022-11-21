@@ -27,7 +27,7 @@ public class PathUtils {
         String uuid = UUID.randomUUID().toString().replaceAll("-", "");
         //String uuidNew = dataName+uuid.substring(8);
         String uuidNews = dataName + "YH" + "-" + uuid.substring(18);
-        //后缀和文件后缀一致
+        //后缀和文件后缀一致 拿到名字
         int index = fileName.lastIndexOf(".");
         // test.jpg -> .jpg
         String fileType = fileName.substring(index);

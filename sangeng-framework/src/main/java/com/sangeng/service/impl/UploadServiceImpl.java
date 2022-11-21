@@ -9,20 +9,18 @@ import com.qiniu.storage.UploadManager;
 import com.qiniu.storage.model.DefaultPutRet;
 import com.qiniu.util.Auth;
 import com.sangeng.config.ResponseResult;
+import com.sangeng.constants.YHOSSConstants;
 import com.sangeng.enums.AppHttpCodeEnum;
 import com.sangeng.exception.SystemException;
 import com.sangeng.service.UploadService;
 import com.sangeng.utils.PathUtils;
 import lombok.Data;
-import org.springframework.boot.context.properties.ConfigurationProperties;
 import org.springframework.stereotype.Service;
 import org.springframework.web.multipart.MultipartFile;
 
 import java.io.InputStream;
 
 @Service
-@Data
-@ConfigurationProperties(prefix = "oss")
 public class UploadServiceImpl implements UploadService {
 
     /**
@@ -36,6 +34,7 @@ public class UploadServiceImpl implements UploadService {
 
         String originalFilename = img.getOriginalFilename();
         //获取原始文件名 进行判断
+        assert originalFilename != null;
         if (!originalFilename.endsWith(".png") && !originalFilename.endsWith(".jpg")) {
             throw new SystemException(AppHttpCodeEnum.FILE_TYPE_ERROR);
         }
@@ -45,9 +44,9 @@ public class UploadServiceImpl implements UploadService {
         return ResponseResult.okResult(url);
     }
 
-    private String accessKey;
-    private String secretKey;
-    private String bucket;
+    String accessKey = YHOSSConstants.YHAccessKey;
+    String secretKey = YHOSSConstants.YHSecretKey;
+    String bucket = YHOSSConstants.YHBucket;
 
     private String uploadOss(MultipartFile imgFile, String filePath) {
         //构造一个带指定 Region 对象的配置类 自动获取存储地址 这个这次是华东-浙江2

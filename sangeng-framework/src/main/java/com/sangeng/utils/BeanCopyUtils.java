@@ -12,7 +12,8 @@ public class BeanCopyUtils {
 
     /**
      * beanCopy 实现字段的变化
-     *
+     * example: User user = loginUser.getUser();
+     * example: UserInfoVo userInfoVo = BeanCopyUtils.copyBean(user, UserInfoVo.class);
      * @param source 源目标
      * @param clazz  要转换的目标的类对象
      * @param <V>    类型为V 传入什么类型 返回什么类型

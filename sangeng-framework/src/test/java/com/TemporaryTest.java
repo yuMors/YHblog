@@ -1,5 +1,6 @@
 package com;
 
+import com.sangeng.constants.YHOSSConstants;
 import com.sangeng.constants.YHTime;
 import net.sf.jsqlparser.expression.DateTimeLiteralExpression;
 import org.apache.poi.ss.formula.functions.Now;
@@ -136,6 +137,16 @@ public class TemporaryTest {
                 }
             }
         }
+    }
+
+    @Test
+    public void test142(){
+        String accessKey = YHOSSConstants.YHAccessKey;
+        String secretKey = YHOSSConstants.YHSecretKey;
+        String bucket = YHOSSConstants.YHBucket;
+        System.out.println(accessKey);
+        System.out.println(secretKey);
+        System.out.println(bucket);
     }
 }
 

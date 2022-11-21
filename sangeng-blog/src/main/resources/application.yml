@@ -33,7 +33,3 @@ mybatis-plus:
       # 主键自增 首先要求数据库字段已设置自增
       id-type: auto
 
-oss:
-  accessKey: eSFNm0_nhg4_pcTf0dYcsEVWiS7-aqowg5h9vg7K
-  secretKey: HHCfafB2a1UQ3WYZ_d3CxbSZNT-PlVN7IbYmu9oB
-  bucket: yehangchuan

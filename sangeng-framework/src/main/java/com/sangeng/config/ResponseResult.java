@@ -44,7 +44,7 @@ public class ResponseResult<T> implements Serializable {
         return new ResponseResult<>();
     }
 
-    public static ResponseResult<?> okResult(Object data) {
+    public static ResponseResult okResult(Object data) {
         ResponseResult result = setAppHttpCodeEnum(
                 AppHttpCodeEnum.SUCCESS,
                 AppHttpCodeEnum.SUCCESS.getMsg());
